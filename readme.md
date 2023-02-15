@@ -42,6 +42,26 @@ function doTest(){
     console.log("Test could not be completed", err);
   });
 }
+
+blackbox.events.on('inspection', (inspection) => {
+  console.log("Inspection Required", inspection);
+});
+
+blackbox.events.on('userInteraction', (interaction) => {
+  console.log("User Interaction Required", interaction);
+});
+
+blackbox.events.on('userInteractionEnd', (interaction) => {
+  console.log("User Interaction Completed", interaction);
+});
+
+blackbox.events.on('stepEndDecision', () => {
+  console.log("Step Ended - Decision Required");
+});
+
+blackbox.events.on('pause', () => {
+  console.log("Autotest Paused");
+});
 ```
 ## To Do
 - Implement all command responses
