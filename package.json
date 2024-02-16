@@ -1,6 +1,6 @@
 {
   "name": "metrel-blackbox",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Interface for Metrel's Blackbox protocol",
   "main": "index.js",
   "scripts": {
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Rizzlar/node-metrel-blackbox/issues"
   },
-  "homepage": "https://github.com/Rizzlar/node-metrel-blackbox#readme"
+  "homepage": "https://github.com/Rizzlar/node-metrel-blackbox#readme",
+  "dependencies": {
+    "serialport": "^10.5.0"
+  }
 }

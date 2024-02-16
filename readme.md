@@ -5,7 +5,7 @@ This is a Node.js implementation of the Blackbox protocol available on Metrel te
 https://www.metrel.si/support/confluence/mpd/en/applications-and-tips/black-box-protocol
 
 ## WARNING!
-This is a work in progress, use at your own risk. The protocol is not yet fully implemented and has not been properly tested. Each instrument seems to have slightly different behaviour, so this may not work fully with your instrument.
+This is a work in progress, use at your own risk. The protocol is not yet fully implemented and has not been properly tested. Each instrument seems to have slightly different behaviour, so this may not work fully with your instrument. Not all possible commands and responses have been tested although the majority are implemented.
 
 ## ⚠️ Safety Warning ⚠️
 I would assume that if you are here, you know what you are doing. However, it is possible to bypass safety features of the instrument when using the blackbox protocol. It is your responsibility to ensure the safety of the operator, instrument and the installation/equipment under test. The following safety warnings are copied directly from the Metrel documentation. Ensure you read the latest documentation for any updates to the below.
@@ -47,6 +47,11 @@ blackbox.events.on('inspection', (inspection) => {
   console.log("Inspection Required", inspection);
 });
 
+blackbox.events.on('inspectionEnd', () => {
+  console.log("Inspection Finished");
+});
+
+
 blackbox.events.on('userInteraction', (interaction) => {
   console.log("User Interaction Required", interaction);
 });
@@ -64,6 +69,13 @@ blackbox.events.on('pause', () => {
 });
 ```
 ## To Do
-- Implement all command responses
+- Implement streaming result data
+- Enable functionality for "debug texts" (althought might not be needed if all the data from ddViewer is extracted)
 - Documentation
-- Tests
+- Test all commands and responses on as many instruments as possible
+- Implement a simulated instrument for testing without a physical instrument
+
+## Tested Instruments
+I have access to the following instruments and have tested (very lightly) with this library.
+- Metrel MI 3155 EurotestXD
+- Metrel MI 3360 OmegaPAT XA
